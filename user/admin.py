@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group
 
 from user.models import User
 
@@ -15,3 +16,6 @@ class UserAdmin(admin.ModelAdmin):
         'user_type',
         'date_joined'
     )
+
+
+admin.site.unregister(Group)
