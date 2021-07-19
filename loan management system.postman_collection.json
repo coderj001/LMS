@@ -1,0 +1,541 @@
+{
+	"info": {
+		"_postman_id": "4c71ca4b-adc1-42bf-9b60-f29fe59422ce",
+		"name": "loan management system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/login/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register agent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "agent_1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "agent_1@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "agent_1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/register/agent/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"register",
+								"agent",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "customer_1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "customer_1@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "customer_1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/register/customer/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"register",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN_ADMIN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{URL}}/users/list/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"list",
+								""
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "customer",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN_AGENT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{URL}}/users/debb2473-dfcf-4607-8363-5320c08575f7/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"debb2473-dfcf-4607-8363-5320c08575f7",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN_ADMIN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "customer2@mail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "customer1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "first_name",
+									"value": "customer2",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "customer last",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/2f837973-6f08-4ff0-8d18-12f791d30504/edit/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"2f837973-6f08-4ff0-8d18-12f791d30504",
+								"edit",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "loan",
+			"item": [
+				{
+					"name": "request loan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN_AGENT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "amount",
+									"value": "10000",
+									"type": "text"
+								},
+								{
+									"key": "interest_rate",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "2021/10/12",
+									"type": "text"
+								},
+								{
+									"key": "customer",
+									"value": "customer_1",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "25",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/loan/create/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"loan",
+								"create",
+								""
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit loan",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN_AGENT}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "amount",
+									"value": "10000",
+									"type": "text"
+								},
+								{
+									"key": "interest_rate",
+									"value": "10.6",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "2022/10/12",
+									"type": "text"
+								},
+								{
+									"key": "customer",
+									"value": "customer1",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "19",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/loan/edit/20/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"loan",
+								"edit",
+								"20",
+								""
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list loan",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN_CUSTOMER}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "amount",
+									"value": "100000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "interest_rate",
+									"value": "5",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "start_date",
+									"value": "2021/10/12",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "customer",
+									"value": "customer2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "duration",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/loan/list/?status=new",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"loan",
+								"list",
+								""
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "new"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loan approved",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN_ADMIN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/loan/1/approved/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"loan",
+								"1",
+								"approved",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loan rejected",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN_ADMIN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/loan/1/rejected/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"loan",
+								"1",
+								"rejected",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "localhost:8000/api"
+		},
+		{
+			"key": "TOKEN_ADMIN",
+			"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI5Mjg5OTczLCJqdGkiOiJmNmI0NjU0MzY4ZjM0MmYyOWU2M2IyYTAwM2ZjYWI0MSIsInVzZXJfaWQiOiJhNWUxNGIxMy03ODJmLTRlNmUtYTZkYS01ZWZjNTZhMTYzOWYifQ.NkEIaehhwZI9EtCcBqkXpV8ySxVtHiAq2fy2Xc45uPQ"
+		},
+		{
+			"key": "TOKEN_AGENT",
+			"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI5Mjg5Nzg0LCJqdGkiOiI5ZGRhNWM4YmRiYjk0Y2Q3YTFjNzMyMjc4ZjE1OTQ1YiIsInVzZXJfaWQiOiJmNGY3N2EzOS1jZjcwLTRiOTMtYjZkOC04YjI4NTA2OGMzZDUifQ.xb6Rq5Unq7DHWO065OLvwf_D2LdughsfIl4XSdfo6dY"
+		},
+		{
+			"key": "TOKEN_CUSTOMER",
+			"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI5Mjg5OTM1LCJqdGkiOiJkYWUzYTgwNTc1ZDU0YzQxYjVlOTZjYWNlN2IwN2Q1ZSIsInVzZXJfaWQiOiI5YzE4Mzg3Yy00YTFjLTRjYzQtYjBlNS0zZTM2ZDZkMDI3YjUifQ.AbQLWcNw6t4SyzrbqPlCLlmCpIrT8DyNMqv63c7EhuM"
+		}
+	]
+}
