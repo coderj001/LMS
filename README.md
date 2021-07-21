@@ -41,13 +41,13 @@ No need to worry about installation, if docker and docker-compose is not install
         ```
         reffer this file [here](./pgdb-env-sample).
 
-- Run the command ` docker-compose up --build `. And it should be up and running. Checkout the endpoints mentioned below. Note test case and admin user(username: admin, email: admin@mail.com, password: admin) will be run and created.
-- To run test case, `docker-compose exec backend python manage.py test`. Note test case and admin user automatically run and created during execution of previous command ` docker-compose up --build `.
-- To create admin user, `docker-compose exec backend python manage.py createsuperuser`. Note test case and admin user automatically run and created during execution of previous command ` docker-compose up --build `.
+- Run the command ` docker-compose up --build `. And it should be up and running. Checkout the endpoints mentioned below. Note test case and  will be run and created.
+- To run test case, `docker-compose exec backend python manage.py test`. Note test case automatically run during execution of previous command ` docker-compose up --build `.
+- To create admin user, `docker-compose exec backend python manage.py createsuperuser`.
 
 ### Admin Panel
 
-Django provide built-in admin panel can be access from `localhost:8000/admin` url. If you used `docker-compose up --build` then admin user will be created by default (username: admin, email: admin@mail.com, password: admin). Otherwise create using `python manage.py createsuperuser`
+Django provide built-in admin panel can be access from `localhost:8000/admin` url. If you used `docker-compose up --build` then admin user will be created by  `docker-compose exec backend python manage.py createsuperuser`. Otherwise create using `python manage.py createsuperuser`
 
 ### API ENDPOINTS
 

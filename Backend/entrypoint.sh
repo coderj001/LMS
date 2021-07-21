@@ -20,8 +20,6 @@ echo -e "${GREEN} LMS Migration ${NC}"
 python manage.py migrate
 echo -e "${GREEN} LMS Testcase ${NC}"
 python manage.py test -v 3
-echo -e "${GREEN} LMS Generate Admin User ${NC}"
-echo "from user.models import User; User.objects.create_superuser(email='admin@mail.com', username='admin', password='admin')" | python manage.py shell
 
 
 exec "$@"
