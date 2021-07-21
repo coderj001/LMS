@@ -7,6 +7,7 @@ name = "pypi"
 Django = "*"
 djangorestframework = "*"
 djangorestframework-simplejwt = "*"
+gunicorn = "*"
 
 [dev-packages]
 django_linter = "*"

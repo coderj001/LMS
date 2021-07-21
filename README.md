@@ -15,7 +15,37 @@
 
 **Django** is the one of the most popular web framework for python, Django takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. As for Postgresql it works well with Django and also preferable for the assignment as mentioned [here](./read.md).
 
-### API ENDPOINT
+### INSTALLATION && USAGE
+
+No need to worry about installation, if docker and docker-compose is not installed in your system please install and follow along the step(s).
+
+- Git Clone this repo and enter into the LMS directory.
+- Create
+    - a file 'backend-env' with content
+        `
+        debug=<>
+        secret_key=<>
+        postgres=<>
+        DB_HOST=<>
+        DB_NAME=<>
+        DB_USER=<>
+        DB_PASS=<>
+        DB_PORT=<>
+        `
+        reffer this file [here](./backend-env-sample)
+    - a file 'pgdb-env' with content
+        `
+            POSTGRES_DB=<>
+            POSTGRES_USER=<>
+            POSTGRES_PASSWORD=<>
+        `
+        reffer this file [here](./pgdb-env-sample)
+
+- Run the command ` docker-compose up --build `. And it should be up and running. Checkout the endpoints mentioned below.
+- To run test case, `docker-compose exec backend python manage.py test`. Note test case and admin user automatically run and created during execution of previous command ` docker-compose up --build `.
+- To create admin user, `docker-compose exec backend python createsuperuser`. Note test case and admin user automatically run and created during execution of previous command ` docker-compose up --build `.
+
+### API ENDPOINTS
 
 #### **BASE_URL**: /api/users
 

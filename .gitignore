@@ -143,3 +143,7 @@ db.sqlite3
 .env
 tags
 .vim/
+web-env
+pgdb-env
+initdb/
+pgdata/
