@@ -24,6 +24,9 @@ def set_date(sdate):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated, IsAgent])
 def request_loan(request, *args, **kwargs):
+    """
+    Create loan by only agent type user. From point 2.
+    """
     agent = request.user
     data = request.data
     try:
@@ -47,6 +50,9 @@ def request_loan(request, *args, **kwargs):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated, IsAgent])
 def edit_loan(request, *args, **kwargs):
+    """
+    Edit loan by only agent type user. From point 4.
+    """
     agent = request.user
     data = request.data
     try:
@@ -78,6 +84,9 @@ def edit_loan(request, *args, **kwargs):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, AllowAny])
 def list_loan(request, *args, **kwargs):
+    """
+    Get list of loan according to hierarchy of users. From point 2.
+    """
     user = request.user
     status = request.query_params.get('status')
     created_at = request.query_params.get('created_at')
@@ -114,6 +123,9 @@ def list_loan(request, *args, **kwargs):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated, IsAdmin])
 def request_loan_approved(request, *args, **kwargs):
+    """
+    Approval loan only by admin user. From point 3.
+    """
     try:
         loan = Loan.objects.get(pk=kwargs.get('id'))
     except Loan.DoesNotExist:
@@ -128,6 +140,9 @@ def request_loan_approved(request, *args, **kwargs):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated, IsAdmin])
 def request_loan_rejected(request, *args, **kwargs):
+    """
+    Reject loan only by admin user. From point 3.
+    """
     try:
         loan = Loan.objects.get(pk=kwargs.get('id'))
     except Loan.DoesNotExist:

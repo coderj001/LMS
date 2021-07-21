@@ -22,7 +22,7 @@ No need to worry about installation, if docker and docker-compose is not install
 - Git Clone this repo and enter into the LMS directory.
 - Create
     - a file 'backend-env' with content
-        `
+        ```
         debug=<>
         secret_key=<>
         postgres=<>
@@ -31,19 +31,23 @@ No need to worry about installation, if docker and docker-compose is not install
         DB_USER=<>
         DB_PASS=<>
         DB_PORT=<>
-        `
-        reffer this file [here](./backend-env-sample)
+        ```
+        reffer this file [here](./backend-env-sample).
     - a file 'pgdb-env' with content
-        `
-            POSTGRES_DB=<>
-            POSTGRES_USER=<>
-            POSTGRES_PASSWORD=<>
-        `
-        reffer this file [here](./pgdb-env-sample)
+        ```
+        POSTGRES_DB=<>
+        POSTGRES_USER=<>
+        POSTGRES_PASSWORD=<>
+        ```
+        reffer this file [here](./pgdb-env-sample).
 
-- Run the command ` docker-compose up --build `. And it should be up and running. Checkout the endpoints mentioned below.
+- Run the command ` docker-compose up --build `. And it should be up and running. Checkout the endpoints mentioned below. Note test case and admin user(username: admin, email: admin@mail.com, password: admin) will be run and created.
 - To run test case, `docker-compose exec backend python manage.py test`. Note test case and admin user automatically run and created during execution of previous command ` docker-compose up --build `.
-- To create admin user, `docker-compose exec backend python createsuperuser`. Note test case and admin user automatically run and created during execution of previous command ` docker-compose up --build `.
+- To create admin user, `docker-compose exec backend python manage.py createsuperuser`. Note test case and admin user automatically run and created during execution of previous command ` docker-compose up --build `.
+
+### Admin Panel
+
+Django provide built-in admin panel can be access from `localhost:8000/admin` url. If you used `docker-compose up --build` then admin user will be created by default (username: admin, email: admin@mail.com, password: admin). Otherwise create using `python manage.py createsuperuser`
 
 ### API ENDPOINTS
 
@@ -321,7 +325,7 @@ Only agent type use can edit
 
 #### Request
 
-`POST <BASE_URL>/<int:id./approved/`
+`POST <BASE_URL>/<int:id>/approved/`
 <br />
 Header: `{ 'Authorization':'<TOKEN>' }`
 
@@ -338,7 +342,7 @@ Only admin allowed
 
 #### Request
 
-`POST <BASE_URL>/<int:id./rejected/`
+`POST <BASE_URL>/<int:id>/rejected/`
 <br />
 Header: `{ 'Authorization':'<TOKEN>' }`
 
@@ -350,3 +354,12 @@ Only admin allowed
     "success": "Loan is rejected."
 }
 ```
+
+## Postman
+
+Use Postman for testing api. Import [lms.postman_collection.json](./lms.postman_collection.json) file on postman to use. As default parameter are set.
+Before making any request on postman. First register user of agent and customer type. Then get tokens for admin, agent and customer type uses from login endpoint and paste to environment variable accordingly.
+
+### Status (Incomplete)
+
+React For Front End will be added shortly.

@@ -26,6 +26,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 @api_view(['POST'])
 def registerAgent(request):
+    """
+    register agent type user
+    """
     data = request.data
     try:
         user = UserModel.objects.create_agent(
@@ -43,6 +46,9 @@ def registerAgent(request):
 
 @api_view(['POST'])
 def registerCustomer(request):
+    """
+    register customer type user
+    """
     data = request.data
     try:
         user = UserModel.objects.create_customer(
@@ -61,6 +67,9 @@ def registerCustomer(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, IsAdminOrAgent])
 def get_user_list(request, *args, **kwargs):
+    """
+    get list of users according to hierarchy of admin and agent. From point 1.
+    """
     if request.user.user_type == 'admin':
         customer = UserModel.customermanager.all()
         agent = UserModel.agentmanager.all()
@@ -75,6 +84,9 @@ def get_user_list(request, *args, **kwargs):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, AllowAny])
 def get_user_view(request, id, *args, **kwargs):
+    """
+    get user detail views also according to hierarchy of user. From point 1.
+    """
     user = UserModel.objects.get(pk=id)
     if user != request.user:
         if request.user.user_type == 'admin' and user.user_type == 'admin':
@@ -95,6 +107,9 @@ def get_user_view(request, id, *args, **kwargs):
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated, IsAdminOrAgent])
 def get_user_edit(request, id, *args, **kwargs):
+    """
+    get edit of user according to hierarchy of admin and agent. From point 1.
+    """
     data = request.data
     user = UserModel.objects.get(pk=id)
     if user != request.user:

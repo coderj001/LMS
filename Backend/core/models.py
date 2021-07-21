@@ -4,18 +4,23 @@ from datetime import timedelta
 
 
 def emi_calculator(p, r, t):
+    # emi = P × r × (1 + r)n/((1 + r)n - 1)
     r = r / (12 * 100)
-    t = t * 12
+    # t = t * 12
     emi = (p * r * pow(1 + r, t)) / (pow(1 + r, t) - 1)
     return round(emi, 2)
 
 
 class Loan(models.Model):
     amount = models.BigIntegerField()
-    interest_rate = models.FloatField()
+    interest_rate = models.FloatField(verbose_name='Rate of interest')
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
-    duration = models.PositiveIntegerField(blank=True, null=True)
+    duration = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        verbose_name='duration in month(s)'
+    )
 
     status_choice = (
         ('new', 'NEW'),
