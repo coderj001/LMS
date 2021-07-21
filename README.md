@@ -219,7 +219,7 @@ Only agent type user is allowed
 
 #### Request
 
-`POST <BASE_URL>/list/?status=<new|approved|rejected>`
+`POST <BASE_URL>/list/?status=<new|approved|rejected>&created_at='yyyy/mm/dd'&updated_at='yyyy/mm/dd'`
 <br />
 Header: `{ 'Authorization':'<TOKEN>' }`
 
@@ -253,7 +253,7 @@ Response result different for different user.
 ]
 ```
 
-### To edit user
+### To edit loan
 
 #### Request
 
@@ -287,11 +287,11 @@ Only agent type use can edit
 }
 ```
 
-### To approved user
+### To approved loan
 
 #### Request
 
-`POST <BASE_URL>/<int:id>/approved/`
+`POST <BASE_URL>/<int:id./approved/`
 <br />
 Header: `{ 'Authorization':'<TOKEN>' }`
 
@@ -304,11 +304,11 @@ Only admin allowed
 }
 ```
 
-### To rejected user
+### To rejected loan
 
 #### Request
 
-`POST <BASE_URL>/<int:id>/rejected/`
+`POST <BASE_URL>/<int:id./rejected/`
 <br />
 Header: `{ 'Authorization':'<TOKEN>' }`
 

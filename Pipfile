@@ -4,18 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-Django = "*"
-djangorestframework = "*"
-djangorestframework-simplejwt = "*"
 
 [dev-packages]
-django_linter = "*"
-pylint = "*"
-ipdb = "*"
-ipython = "*"
-isort = "*"
-rope = "*"
-autopep8 = "*"
 
 [requires]
 python_version = "3.9"
