@@ -1,9 +1,13 @@
 import React from "react";
+import { LoginPage, RegisterPage } from "./Pages";
+import { Navbar } from "./components";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <Navbar />
+      <LoginPage />
+      <RegisterPage />
     </div>
   );
 }
